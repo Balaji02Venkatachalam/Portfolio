@@ -2,6 +2,13 @@
   
     background-color: #151925 !important;
 }
+.reveal{
+    opacity:0;
+    transition: opacity 1s ease-in-out;
+}
+.visible{
+opacity:1;
+}
 html{
     scroll-behavior: smooth !important;
 }
@@ -11,7 +18,7 @@ body{
 a{
     text-decoration: none;
     color:white;
-    display:inline-block;
+   
 }
  *{
     margin:0;
@@ -29,27 +36,68 @@ header{
     padding:20px;  
     background-color: #151925;
 }
-nav>h1{
-    display:inline-block;
-    font-weight: bolder;
-    padding-left:20px;
-}
-ul,li{
-    display:inline-block;
-    font-weight: bold;
+.menu{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+
 }
 ul{
-    float:right;
-    display:flex;
-    position: relative;
-    top:10px;
-    gap: 2.5rem;
-    
+    font-weight: bold;
+    list-style-type: none;
 }
-li:hover a{
+ul{
+    display:flex;
+    align-items: center;
+    gap: 2.5rem;  
+}
+a:hover {
     color:#11EEEE;
     cursor:pointer;
     transition:0.5s;
+}
+.list{
+    @media (width<900px) {
+        background-color: #0b0985;
+        position:fixed;
+        padding:20px;
+        inset: 0;
+        translate: 100vw 0;
+        transition: translate 1s ease-in-out;
+    }
+}
+.nav_open{
+    background: none;
+    border:none;
+    display:block;
+    @media (width>900px){
+            display:none;
+    }
+}
+.nav_open[aria-expanded='true']
+{
+    + .list{
+           translate:0;
+           z-index: 2;
+    }
+}
+.nav_close{
+    background: none;
+    border:none;
+    display:block;
+    margin-inline-start: auto;
+    margin-block-end: 150px;
+    @media (width>900px){
+        display:none;
+    }
+}
+.nav_close>img{
+    width: 25px;
+}
+ul{
+    @media (width<900px){
+        flex-direction: column;
+    }
 }
 .hero_text{
     display:flex;
@@ -64,8 +112,9 @@ li:hover a{
 .hero_text>h1{
     font-weight:bolder;
     color:white;
-    font-size: 70px;
+    font-size: 5vw;
 }
+
 .hero_char{
     font-family:  "Sen", sans-serif;
     color:white;
@@ -102,10 +151,10 @@ li:hover a{
 .hero_sec{
     display:flex;
     height: 85vh;
-      justify-content: space-between;
     align-items: center;
-    gap:300px;
-    width: inherit;
+    gap:10vw;
+    margin:20px;
+    width:inherit;
     background-color: #151925;
 }
 .hero_image>div{
@@ -120,19 +169,75 @@ li:hover a{
     width:350px;
     box-shadow: 0 0 7px 3px #11EEEE;
 }
+@keyframes makeupdown {
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-20px);
+    }
+    
+}
+.hero_image{
+    animation: makeupdown 3s ease-in infinite;
+}
 .hero_image>div>img{
     width: 100%; 
     position: absolute; 
     right:4px;
 }
+@media screen and (max-width:800px) {
+    .hero_sec {
+        margin-top:10px;
+        
+        flex-direction: column-reverse;
+        gap:0;
+        justify-content: center;
+        align-items:center;
+        height: 100vh;
+    }
+    .hero_text>p,.hero_text>h5,.hero_char{
+        font-size:5.5vw;
+  }
+ 
+  .hero_image>div{
+        margin:auto; 
+        position:relative;
+        left:10px;
+    height: 70vw;
+    margin:10px;
+width: 70vw;
+}
+}
+
+@media  screen and (min-width:1500px) {
+    .hero_sec{
+        
+        justify-content:center;
+    }
+    .hero_text>p,.hero_text>h5,.hero_char{
+          font-size:1vw;
+    }
+    .hero_image>div{
+         
+        height: 25vw;
+    width: 25vw;
+    }
+    .list>ul{
+        gap:5vw;
+    }
+ .list>ul>li>a{
+        font-size: 1.5vw;
+    }
+}
+
 .about_me{
     background-color: #323846;
     width: inherit;
     height: fit-content;
     display:flex;
     padding:60px;
-    gap:30vw;
-    justify-content: space-between;
+    gap:10vw;
     align-items: center;
 }
 .about_me>.about_img>div{
@@ -166,6 +271,35 @@ h1>span{
     font-size: 30px;
     color:white;
 }
+@media screen and (max-width:800px) {
+    .about_me{
+        flex-direction: column;
+     
+    }
+    .about_me>.about_details>h1,.about_me>.about_details>p{
+        font-size: 4vw;
+    }
+    .about_me>.about_img>div{
+         
+        height: 70vw;
+    width: 70vw;
+    }
+}
+
+@media screen and (min-width:1500px){
+
+    .about_me>.about_img>div{
+     
+        height: 25vw;
+        width: 25vw;
+    }
+    .about_me{
+        margin:auto;
+        font-size:1vw;
+        justify-content: center;
+
+    }
+}
 p{
     color:white;
 }
@@ -180,7 +314,6 @@ p{
 .skills_list{
 display:flex;
 flex-direction: column;
-
 gap:50px;
 
 }
@@ -196,14 +329,26 @@ gap:50px;
 }
 .skill_sets>div>div>img{
     height: auto;
-    width: 100px;
-    
+    width: 100px;  
 }
 
 .progress{
    margin:auto;
    margin-left:0;
     width:500px;
+}
+@media screen and (max-width:750px){
+    .skill_sets>div{
+        
+        gap: 1vw;
+    }
+    .skill_sets>div>div>img{
+        width: 15vw;  
+    }
+    .progress{
+         height: 14px;
+         width: 60vw;
+     }
 }
 .projects{
     background-color: #323846;
@@ -235,7 +380,6 @@ gap:50px;
 .project_card{
     background-color: #151925;
     padding:20px;
-   
     height: fit-content;
     width: fit-content;
     border-radius:20px;
@@ -244,7 +388,6 @@ gap:50px;
     width:300px;
     height: 150px;
     margin:auto
-   
 }
 h3>span{
     color:white;
@@ -254,28 +397,43 @@ h3>span{
     color:white;
     background-color: #323846;
     padding:5px;
+    line-height: 50px;
     border-radius:10px;
     margin:5px;
 
 }
-.project_link{
+/*.project_link{
     color:white;
     background-color: #11EEEE;
     border-radius:10px;
     margin-top:10px;
     padding:5px;
     width: fit-content;
-}
+}*/
 .project_card>p{
     width:300px;
     text-align: justify;
     margin-top: 5px;
     margin-bottom: 10px;
 }
-.projects>h5{
-    margin:auto;
-    margin-top:50px;
+.project_card>a{
+    position:relative;
+    top:15px;
     cursor:pointer;
+}
+.project_card>a:hover .project_card>a>h5{
+    background-color: #11EEEE;
+    border-radius: 15px; 
+}
+@media screen and (max-width:1150px) {
+    .project_list{
+        display:flex;
+        flex-direction: column;
+        gap:30px;
+        justify-content: center;
+        align-items: center;
+    }
+    
 }
 footer>h1{
     display:flex;
@@ -315,4 +473,14 @@ input::placeholder{
 .message_box{
     height: 300px;
     width: 600px;
+}
+@media screen and (max-width: 650px){
+    input{
+       
+        width: 40vw;
+    }
+    .message_box{
+       
+        width: 80vw;
+    }
 }
