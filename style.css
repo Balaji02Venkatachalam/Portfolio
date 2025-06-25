@@ -1,6 +1,6 @@
 .html{
   
-    background-color: #e0430e !important;
+    background-color: #151925 !important;
 }
 .reveal{
     opacity:0;
@@ -13,7 +13,7 @@ html{
     scroll-behavior: smooth !important;
 }
 body{
-    background-color: #e0430e;
+    background-color: #151925;
 }
 a{
     text-decoration: none;
