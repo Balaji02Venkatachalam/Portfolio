@@ -1,5 +1,5 @@
 var typed = new Typed('#hero_char', {
-    strings: ['Frontend Developer', 'Designer', 'Programmer', 'Student'],
+    strings: ['Web Developer', 'Designer', 'Programmer', 'Student'],
     typeSpeed: 100,
     backSpeed: 100,
     loop: true
