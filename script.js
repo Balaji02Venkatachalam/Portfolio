@@ -51,7 +51,7 @@ var typed = new Typed('#hero_char', {
         
         setTimeout(() =>{
             topnavmenu.style.transition='none';
-        },500);
+        },1300);
         main.removeAttribute('inert');
         bodyScrollLockUpgrade.enableBodyScroll(body);
         openbtn.focus();
